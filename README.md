@@ -16,7 +16,7 @@ No experience with Golang, Angular, or Typescript.
 
 Prateek Sharma:
 Experienced in Python, Machine learning, Data Science, C++
-Moderate experience in Java, SQLite
+Moderate experience in C, Java, SQLite, 
 Some experience in Android app development using Android studio
 No experience with Golang, Angular, or Typescript.
 
