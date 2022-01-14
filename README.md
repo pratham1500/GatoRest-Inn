@@ -19,3 +19,9 @@ Experienced in Python, Machine learning, C++
 Moderate experience in Java, SQLite
 Some experience in Android app development using Android studio
 No experience with Golang, Angular, or Typescript.
+
+Pratham Agarwal:
+Experienced in C, C++, Java, Python, Game Development.
+Moderate experience in Artificial Intelligence, Machine Learning, HTML
+Some experience in Android App Dev., IOS App Dev.
+No experience with Golang, Angular, or Typescript.
