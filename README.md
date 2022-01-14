@@ -25,3 +25,8 @@ Experienced in C, C++, Java, Python, Game Development.
 Moderate experience in Artificial Intelligence, Machine Learning, HTML
 Some experience in Android App Dev., IOS App Dev.
 No experience with Golang, Angular, or Typescript.
+
+Avneesh Atrey:
+Experienced in Machine Learning, C++, python(product recommandation)
+Moderate experience in java, web development
+No experience with Golang, Angular or typescript.
