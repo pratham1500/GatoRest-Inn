@@ -1,5 +1,6 @@
-# Hotel-Managment-System
+# GatoRest-Inn
 Software Engineering Project
+
 Group Members:
 Pratham Agarwal
 Prateek Sharma
