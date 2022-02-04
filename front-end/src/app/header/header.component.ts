@@ -9,6 +9,18 @@ import { Component, OnInit } from '@angular/core';
           <img src="assets/images/logo.png" >
         </a>
       </div>
+      <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <a class="button is-warning">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-dark">
+          <strong>Login</strong>
+          </a>
+        </div>
+      </div>
+    </div>
     </div>
   `,
   styles: [
