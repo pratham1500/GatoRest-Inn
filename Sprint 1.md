@@ -14,4 +14,5 @@ https://user-images.githubusercontent.com/42437523/152629588-77852a32-3b38-4cc7-
 
 ### Back-end:
 #### Pratham Agarwal, Avneesh Atrey
-Add data here.
+Created a database that stores Administrator information and a second databse that stores end user data and can only be updated or altered by the Admin login 
+Used Gorm and SQLite3 for the above mentioned database
