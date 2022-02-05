@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
     <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <h1 class="title" style="color:orange;font-style:italic;font-size:400%;-webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;">
-    The GatoRest Inn  
+    GatoRest Inn  
     </h1>
     </div>
     </div>
