@@ -12,8 +12,8 @@ import { Component, OnInit } from '@angular/core';
       <div class="navbar-end">
       <div class="buttons">
         <a class="button" routerLink="/contact"><strong>Contact Us</strong></a>
-        <a class="button is-warning"><strong>Sign Up</strong></a>
-        <a class="button is-dark"><strong>Login</strong></a>
+        <a class="button is-warning" routerLink="/signup"><strong>Sign Up</strong></a>
+        <a class="button is-dark" routerLink="/login"><strong>Login</strong></a>
       </div>
     </div>
     </div>
