@@ -10,6 +10,7 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { CheckAvailComponent } from './check-avail/check-avail.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ServiceRequestComponent } from './service-request/service-request.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     LoginComponent,
     SignupComponent,
     CheckAvailComponent,
+    ServiceRequestComponent,
   ],
   imports: [
     BrowserModule,
