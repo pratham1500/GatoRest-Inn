@@ -5,10 +5,17 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <div class="navbar is-light">
       <div class="navbar-brand">
-        <a class="navbar-item">
+        <a class="navbar-item" routerLink="/">
           <img src="assets/images/logo.png" >
         </a>
       </div>
+      <div class="navbar-end">
+      <div class="buttons">
+        <a class="button" routerLink="/contact"><strong>Contact Us</strong></a>
+        <a class="button is-warning" routerLink="/signup"><strong>Sign Up</strong></a>
+        <a class="button is-dark" routerLink="/login"><strong>Login</strong></a>
+      </div>
+    </div>
     </div>
   `,
   styles: [
