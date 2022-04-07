@@ -11,8 +11,8 @@ class NavBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: press(),
+    return TextButton(
+      onPressed: press(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Text(

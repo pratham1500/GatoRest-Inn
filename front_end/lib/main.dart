@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:front_end/pages/homepage.dart';
+import 'package:front_end/pages/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'GatoRest Inn',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.amber,
       ),
       home: const HomePage(),
     );

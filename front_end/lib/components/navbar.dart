@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/pages/signup_page.dart';
+import '../pages/login_page.dart';
 import '../widgets/navbar_item.dart';
 
 class NavBar extends StatefulWidget {
@@ -42,9 +44,27 @@ class _NavBarState extends State<NavBar> {
             itemName: "AVAILABILITY",
             press: () {},
           ),
-          NavBarItem(
-            itemName: "LOGIN",
-            press: () {},
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LoginPage(),
+                ),
+              );
+            },
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Text(
+                "LOGIN",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 5),
@@ -53,7 +73,15 @@ class _NavBarState extends State<NavBar> {
                 padding: MaterialStateProperty.all(const EdgeInsets.all(15)),
                 backgroundColor: MaterialStateProperty.all(Colors.amber),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SignupPage(),
+                  ),
+                );
+              },
               child: const Text(
                 "SIGN UP",
                 style: TextStyle(
