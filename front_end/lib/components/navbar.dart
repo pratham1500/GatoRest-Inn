@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/pages/home_page.dart';
+import 'package:front_end/pages/locations.dart';
 import 'package:front_end/pages/signup_page.dart';
 import '../pages/login_page.dart';
 import '../widgets/navbar_item.dart';
@@ -22,15 +24,39 @@ class _NavBarState extends State<NavBar> {
       ),
       child: Row(
         children: [
-          Image.asset("assets/images/logo.png"),
+          TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const HomePage(),
+                  ),
+                );
+              },
+              child: Image.asset("assets/images/logo.png")),
           const Spacer(),
-          NavBarItem(
-            itemName: "HOME",
-            press: () {},
-          ),
-          NavBarItem(
-            itemName: "OUR LOCATIONS",
-            press: () {},
+          TextButton(
+            onPressed: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const LocationsPage(),
+                ),
+              );
+            },
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Text(
+                "OUR LOCATIONS",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 15,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
           NavBarItem(
             itemName: "AMENITIES",

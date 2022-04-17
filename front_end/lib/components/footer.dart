@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/pages/admin_login.dart';
+import 'package:front_end/pages/home_page.dart';
+import 'package:front_end/pages/locations.dart';
 
 class Footer extends StatefulWidget {
   const Footer({Key? key}) : super(key: key);
@@ -62,11 +65,20 @@ class _FooterState extends State<Footer> {
               Container(
                 height: height / 4.5,
                 width: width / 6,
-                child: const Center(
-                  child: Text(
-                    "Home",
-                    style: TextStyle(
-                      fontSize: 15,
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const HomePage()));
+                    },
+                    child: const Text(
+                      "Home",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
@@ -116,13 +128,22 @@ class _FooterState extends State<Footer> {
               Container(
                 height: height / 2.25,
                 width: width / 6,
-                child: const Center(
-                  child: Text(
-                    "FLG-0270, Florida Gymnasium, University of Florida",
-                    style: TextStyle(
-                      fontSize: 15,
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const LocationsPage()));
+                    },
+                    child: const Text(
+                      "FLG-0270, Florida Gymnasium, University of Florida",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
+                      textAlign: TextAlign.center,
                     ),
-                    textAlign: TextAlign.center,
                   ),
                 ),
               ),
@@ -202,11 +223,20 @@ class _FooterState extends State<Footer> {
               Container(
                 height: height / 4.5,
                 width: width / 6,
-                child: const Center(
-                  child: Text(
-                    "Admin Login",
-                    style: TextStyle(
-                      fontSize: 15,
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const AdminLoginPage()));
+                    },
+                    child: const Text(
+                      "Admin Login",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
