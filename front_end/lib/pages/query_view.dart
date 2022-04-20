@@ -31,7 +31,6 @@ class _QueryViewState extends State<QueryView> {
               ),
               child: Column(
                 children: [
-                  const NavBar(),
                   const Spacer(),
                   Container(
                     decoration: BoxDecoration(
@@ -51,7 +50,7 @@ class _QueryViewState extends State<QueryView> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        Container(
+                        SizedBox(
                           height: height / 1.5,
                           width: width / 2,
                           child: ListView.builder(
@@ -62,13 +61,13 @@ class _QueryViewState extends State<QueryView> {
                                 title: Row(
                                   children: [
                                     Text(qnames[index]),
-                                    Spacer(),
+                                    const Spacer(),
                                     IconButton(
                                       onPressed: () {
                                         launch(
                                             'mailto:${qemails[index]}?subject=Query Response');
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.reply,
                                         color: Colors.black,
                                       ),
@@ -85,7 +84,7 @@ class _QueryViewState extends State<QueryView> {
                                         queries.removeAt(index);
                                         setState(() {});
                                       },
-                                      icon: Icon(
+                                      icon: const Icon(
                                         Icons.delete,
                                         color: Colors.red,
                                       ),

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/components/funcsnvars.dart';
 import 'package:front_end/pages/home_page.dart';
-
 import '../components/footer.dart';
 import '../components/navbar.dart';
-import 'login_page.dart';
 
 class SignupPage extends StatefulWidget {
   const SignupPage({Key? key}) : super(key: key);

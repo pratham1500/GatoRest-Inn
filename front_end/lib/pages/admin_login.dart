@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/pages/admin_panel.dart';
 import '../components/footer.dart';
@@ -11,6 +12,8 @@ class AdminLoginPage extends StatefulWidget {
 }
 
 class _AdminLoginPageState extends State<AdminLoginPage> {
+  var emailController = TextEditingController();
+  var passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -51,14 +54,16 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                           ),
                         ),
                         TextField(
+                          controller: emailController,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            labelText: "Enter Username",
+                            labelText: "Enter Email",
                           ),
                         ),
                         TextField(
+                          controller: passController,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -69,13 +74,35 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                         ),
                         const SizedBox(),
                         ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const AdminPage(),
-                              ),
-                            );
+                          onPressed: () async {
+                            if (emailController.text.isNotEmpty) {
+                              if (passController.text.isNotEmpty) {
+                                var doc = await FirebaseFirestore.instance
+                                    .collection("Admins")
+                                    .doc(emailController.text)
+                                    .get();
+                                if (doc.exists) {
+                                  if (doc['pass'] == passController.text) {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => const AdminPage(),
+                                      ),
+                                    );
+                                  }
+                                }
+                                else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return const AlertDialog(
+                                        title: Text("No Admin account exists for this email."),
+                                      );
+                                    },
+                                  );
+                                }
+                              }
+                            }
                           },
                           child: const Padding(
                             padding: EdgeInsets.all(8.0),

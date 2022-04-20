@@ -1,12 +1,9 @@
-import 'dart:math';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/components/funcsnvars.dart';
 import 'package:front_end/pages/query_view.dart';
 
 import '../components/footer.dart';
-import '../components/navbar.dart';
 
 class AdminPage extends StatefulWidget {
   const AdminPage({Key? key}) : super(key: key);
@@ -34,7 +31,6 @@ class _AdminPageState extends State<AdminPage> {
               ),
               child: Column(
                 children: [
-                  const NavBar(),
                   const Spacer(),
                   Container(
                     decoration: BoxDecoration(

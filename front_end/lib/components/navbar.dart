@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:front_end/components/funcsnvars.dart';
 import 'package:front_end/pages/contact_us.dart';
 import 'package:front_end/pages/home_page.dart';

@@ -21,7 +21,7 @@ class _FooterState extends State<Footer> {
       height: height,
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: width / 3,
             child: Center(
               child: Column(
@@ -49,7 +49,7 @@ class _FooterState extends State<Footer> {
           ),
           Column(
             children: [
-              Container(
+              SizedBox(
                 height: height / 3,
                 width: width / 6,
                 child: const Center(
@@ -63,7 +63,7 @@ class _FooterState extends State<Footer> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: height / 4.5,
                 width: width / 6,
                 child: Center(
@@ -84,7 +84,7 @@ class _FooterState extends State<Footer> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: height / 4.5,
                 width: width / 6,
                 child: const Center(
@@ -96,7 +96,7 @@ class _FooterState extends State<Footer> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: height / 4.5,
                 width: width / 6,
                 child: const Center(
@@ -112,7 +112,7 @@ class _FooterState extends State<Footer> {
           ),
           Column(
             children: [
-              Container(
+              SizedBox(
                 height: height / 3,
                 width: width / 6,
                 child: const Center(
@@ -126,7 +126,7 @@ class _FooterState extends State<Footer> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: height / 2.25,
                 width: width / 6,
                 child: Center(
@@ -153,7 +153,7 @@ class _FooterState extends State<Footer> {
           ),
           Column(
             children: [
-              Container(
+              SizedBox(
                 height: height / 3,
                 width: width / 6,
                 child: const Center(
@@ -167,7 +167,7 @@ class _FooterState extends State<Footer> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: height / 4.5,
                 width: width / 6,
                 child: Center(
@@ -188,7 +188,7 @@ class _FooterState extends State<Footer> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: height / 4.5,
                 width: width / 6,
                 child: const Center(
@@ -200,7 +200,7 @@ class _FooterState extends State<Footer> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: height / 4.5,
                 width: width / 6,
                 child: const Center(
@@ -216,7 +216,7 @@ class _FooterState extends State<Footer> {
           ),
           Column(
             children: [
-              Container(
+              SizedBox(
                 height: height / 3,
                 width: width / 6,
                 child: const Center(
@@ -230,7 +230,7 @@ class _FooterState extends State<Footer> {
                   ),
                 ),
               ),
-              Container(
+              SizedBox(
                 height: height / 4.5,
                 width: width / 6,
                 child: Center(

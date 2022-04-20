@@ -58,7 +58,7 @@ class _LocationsPageState extends State<LocationsPage> {
                         ),
                         ClipRRect(
                           borderRadius: BorderRadius.circular(15),
-                          child: Container(
+                          child: SizedBox(
                             height: height / 2,
                             width: width / 2,
                             child: FlutterMap(
@@ -80,9 +80,7 @@ class _LocationsPageState extends State<LocationsPage> {
                                       height: 80.0,
                                       point: LatLng(29.64957651305397,
                                           -82.34728203920992),
-                                      builder: (context) => Container(
-                                        child: const Icon(Icons.pin_drop),
-                                      ),
+                                      builder: (context) => const Icon(Icons.pin_drop),
                                     ),
                                   ],
                                 ),
