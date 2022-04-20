@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:front_end/components/funcsnvars.dart';
 import 'package:front_end/pages/admin_panel.dart';
 import '../components/footer.dart';
 import '../components/navbar.dart';
@@ -83,6 +84,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                                     .get();
                                 if (doc.exists) {
                                   if (doc['pass'] == passController.text) {
+                                    adminEmail = emailController.text;
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -90,13 +92,13 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                                       ),
                                     );
                                   }
-                                }
-                                else {
+                                } else {
                                   showDialog(
                                     context: context,
                                     builder: (context) {
                                       return const AlertDialog(
-                                        title: Text("No Admin account exists for this email."),
+                                        title: Text(
+                                            "No Admin account exists for this email."),
                                       );
                                     },
                                   );

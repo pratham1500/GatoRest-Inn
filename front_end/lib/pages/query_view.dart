@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:front_end/components/funcsnvars.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../components/footer.dart';
-import '../components/navbar.dart';
 
 class QueryView extends StatefulWidget {
   const QueryView({Key? key}) : super(key: key);

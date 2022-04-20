@@ -6,6 +6,9 @@ String errorText = "";
 String? uid;
 String? userEmail;
 
+String adminEmail = "";
+List<String> adminIds = [];
+
 List<String> qids = [];
 List<String> qnames = [];
 List<String> qemails = [];
