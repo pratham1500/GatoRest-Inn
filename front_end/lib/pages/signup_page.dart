@@ -94,18 +94,44 @@ class _SignupPageState extends State<SignupPage> {
                                   await registerWithEmailPassword(
                                       emailController.text,
                                       passController.text);
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return const AlertDialog(
+                                        title: Text("Passwords mismatched!"),
+                                      );
+                                    },
+                                  );
                                 }
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return const AlertDialog(
+                                      title: Text("Password cannot be empty!"),
+                                    );
+                                  },
+                                );
                               }
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return const AlertDialog(
+                                    title: Text("Email cannot be empty!"),
+                                  );
+                                },
+                              );
                             }
-                            if (auth.currentUser != null) {
+                            if (isSignedIn) {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) => const HomePage(),
                                 ),
                               );
-                            }
-                            else {
+                            } else {
                               showDialog(
                                 context: context,
                                 builder: (context) {

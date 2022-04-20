@@ -81,9 +81,27 @@ class _LoginPageState extends State<LoginPage> {
                               if (passController.text.isNotEmpty) {
                                 await signInWithEmailPassword(
                                     emailController.text, passController.text);
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return const AlertDialog(
+                                      title: Text("Password cannot be empty!"),
+                                    );
+                                  },
+                                );
                               }
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return const AlertDialog(
+                                    title: Text("Email cannot be empty!"),
+                                  );
+                                },
+                              );
                             }
-                            if (auth.currentUser != null) {
+                            if (isSignedIn) {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(

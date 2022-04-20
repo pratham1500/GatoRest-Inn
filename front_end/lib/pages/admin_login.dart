@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/pages/admin_panel.dart';
 import '../components/footer.dart';
 import '../components/navbar.dart';
 
@@ -69,7 +70,12 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                         const SizedBox(),
                         ElevatedButton(
                           onPressed: () {
-                            
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AdminPage(),
+                              ),
+                            );
                           },
                           child: const Padding(
                             padding: EdgeInsets.all(8.0),
