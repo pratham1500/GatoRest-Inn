@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:front_end/components/funcsnvars.dart';
+import 'package:front_end/pages/home_page.dart';
 import 'package:front_end/pages/signup_page.dart';
 
 import '../components/footer.dart';
@@ -12,6 +14,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  var emailController = TextEditingController();
+  var passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -52,14 +56,16 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         TextField(
+                          controller: emailController,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
                             ),
-                            labelText: "Enter Username",
+                            labelText: "Enter Email",
                           ),
                         ),
                         TextField(
+                          controller: passController,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -70,13 +76,30 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         const SizedBox(),
                         ElevatedButton(
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const SignupPage(),
-                              ),
-                            );
+                          onPressed: () async {
+                            if (emailController.text.isNotEmpty) {
+                              if (passController.text.isNotEmpty) {
+                                await signInWithEmailPassword(
+                                    emailController.text, passController.text);
+                              }
+                            }
+                            if (auth.currentUser != null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const HomePage(),
+                                ),
+                              );
+                            } else {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: Text(errorText),
+                                  );
+                                },
+                              );
+                            }
                           },
                           child: const Padding(
                             padding: EdgeInsets.all(8.0),

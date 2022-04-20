@@ -171,7 +171,26 @@ class _NavBarState extends State<NavBar> {
                     ),
                   ),
                 )
-              : const SizedBox(),
+              : TextButton(
+                  onPressed: () async {
+                    await signOut();
+                    setState(() {});
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomePage(),
+                      ),
+                    );
+                  },
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Icon(
+                      Icons.logout,
+                      color: Colors.black,
+                    ),
+                  ),
+                ),
         ],
       ),
     );
