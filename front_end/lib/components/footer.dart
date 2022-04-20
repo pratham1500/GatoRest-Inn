@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/pages/admin_login.dart';
+import 'package:front_end/pages/contact_us.dart';
 import 'package:front_end/pages/home_page.dart';
 import 'package:front_end/pages/locations.dart';
 
@@ -169,11 +170,20 @@ class _FooterState extends State<Footer> {
               Container(
                 height: height / 4.5,
                 width: width / 6,
-                child: const Center(
-                  child: Text(
-                    "Contact Us",
-                    style: TextStyle(
-                      fontSize: 15,
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const ContactUsPage()));
+                    },
+                    child: const Text(
+                      "Contact Us",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
