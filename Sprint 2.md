@@ -1,4 +1,4 @@
-Cypress is already implimented for the testing 
+Cypress is already implemented for the testing 
 Created five required pages for user interface :-<br>
 1.) User login
 2.) Admin
