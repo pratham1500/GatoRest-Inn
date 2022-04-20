@@ -1,6 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
 import '../components/footer.dart';
 import '../components/navbar.dart';
 
@@ -12,6 +11,9 @@ class ContactUsPage extends StatefulWidget {
 }
 
 class _ContactUsPageState extends State<ContactUsPage> {
+  var nameController = TextEditingController();
+  var emailController = TextEditingController();
+  var queryController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -58,6 +60,7 @@ class _ContactUsPageState extends State<ContactUsPage> {
                           ),
                         ),
                         TextField(
+                          controller: nameController,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -66,6 +69,7 @@ class _ContactUsPageState extends State<ContactUsPage> {
                           ),
                         ),
                         TextField(
+                          controller: emailController,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
@@ -74,6 +78,7 @@ class _ContactUsPageState extends State<ContactUsPage> {
                           ),
                         ),
                         TextField(
+                          controller: queryController,
                           keyboardType: TextInputType.multiline,
                           maxLines: 8,
                           decoration: InputDecoration(
@@ -84,10 +89,35 @@ class _ContactUsPageState extends State<ContactUsPage> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: () {},
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: const Text(
+                          onPressed: () {
+                            if (nameController.text.isNotEmpty) {
+                              if (emailController.text.isNotEmpty) {
+                                if (queryController.text.isNotEmpty) {
+                                  FirebaseFirestore.instance
+                                      .collection("Queries")
+                                      .add({
+                                    "name": nameController.text,
+                                    "email": emailController.text,
+                                    "query": queryController.text
+                                  });
+                                  nameController.clear();
+                                  emailController.clear();
+                                  queryController.clear();
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return const AlertDialog(
+                                        title: Text("Query Submitted!"),
+                                      );
+                                    },
+                                  );
+                                }
+                              }
+                            }
+                          },
+                          child: const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
                               "SEND",
                               style: TextStyle(
                                 fontSize: 20,
