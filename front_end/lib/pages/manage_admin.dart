@@ -1,0 +1,109 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:front_end/components/funcsnvars.dart';
+
+import '../components/footer.dart';
+
+class ManageAdmin extends StatefulWidget {
+  const ManageAdmin({Key? key}) : super(key: key);
+
+  @override
+  State<ManageAdmin> createState() => _ManageAdminState();
+}
+
+class _ManageAdminState extends State<ManageAdmin> {
+  @override
+  Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              height: height,
+              width: width,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage("assets/images/background.jpg"),
+                    fit: BoxFit.cover),
+              ),
+              child: Column(
+                children: [
+                  const Spacer(),
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white.withOpacity(.95),
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    height: height / 1.2,
+                    width: width / 1.2,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        const Text(
+                          "Admin Management",
+                          style: TextStyle(
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          height: height / 1.5,
+                          width: width / 2,
+                          child: adminIds.length != 1
+                              ? ListView.builder(
+                                  padding: const EdgeInsets.all(8),
+                                  itemCount: adminIds.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    if (adminEmail != adminIds[index]) {
+                                      return ListTile(
+                                        title: Row(
+                                          children: [
+                                            Text(adminIds[index]),
+                                            const Spacer(),
+                                            IconButton(
+                                              onPressed: () async {
+                                                await FirebaseFirestore.instance
+                                                    .collection("Admins")
+                                                    .doc(adminIds[index])
+                                                    .delete();
+                                                adminIds.removeAt(index);
+                                                setState(() {});
+                                              },
+                                              icon: const Icon(
+                                                Icons.delete,
+                                                color: Colors.red,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      );
+                                    } else {
+                                      return const SizedBox();
+                                    }
+                                  },
+                                )
+                              : const Expanded(
+                                  child: Center(
+                                    child:
+                                        Text("No other admin accounts active."),
+                                  ),
+                                ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Spacer(),
+                ],
+              ),
+            ),
+            const Footer(),
+          ],
+        ),
+      ),
+    );
+  }
+}

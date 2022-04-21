@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "621037903956",
+    "project_id": "gatorest-inn-6f2ee",
+    "storage_bucket": "gatorest-inn-6f2ee.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621037903956:android:9e72d13a39b9bb5c3e4dc1",
+        "android_client_info": {
+          "package_name": "com.example.front_end"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "621037903956-m5e5glc61d4di1ggnh31lupum2vmc50q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDEUczohmmdVKvmwgU798pGsvLg6CR3-MM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "621037903956-m5e5glc61d4di1ggnh31lupum2vmc50q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
