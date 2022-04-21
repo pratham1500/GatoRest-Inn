@@ -90,6 +90,14 @@ class _ContactUsPageState extends State<ContactUsPage> {
                         ),
                         ElevatedButton(
                           onPressed: () {
+                            FirebaseFirestore.instance
+                                      .collection("Executive Suites")
+                                      .doc("Suite 205")
+                                      .set({
+                                    "EndDate": Timestamp.fromDate(DateTime(2022,4,5)),
+                                    "StartDate": Timestamp.fromDate(DateTime(2022,4,5)),
+                                    "SuiteUser": "",
+                                  });
                             if (nameController.text.isNotEmpty) {
                               if (emailController.text.isNotEmpty) {
                                 if (queryController.text.isNotEmpty) {

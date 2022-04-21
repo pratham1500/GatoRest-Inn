@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:front_end/components/funcsnvars.dart';
+import 'package:front_end/pages/availability.dart';
 import 'package:front_end/pages/contact_us.dart';
 import 'package:front_end/pages/home_page.dart';
 import 'package:front_end/pages/locations.dart';
@@ -95,7 +96,14 @@ class _NavBarState extends State<NavBar> {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AvailabilityPage(),
+                ),
+              );
+            },
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(

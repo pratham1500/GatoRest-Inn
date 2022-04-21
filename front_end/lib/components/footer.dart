@@ -3,6 +3,7 @@ import 'package:front_end/pages/admin_login.dart';
 import 'package:front_end/pages/contact_us.dart';
 import 'package:front_end/pages/home_page.dart';
 import 'package:front_end/pages/locations.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Footer extends StatefulWidget {
   const Footer({Key? key}) : super(key: key);
@@ -89,18 +90,6 @@ class _FooterState extends State<Footer> {
                 width: width / 6,
                 child: const Center(
                   child: Text(
-                    "About",
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: height / 4.5,
-                width: width / 6,
-                child: const Center(
-                  child: Text(
                     "Amenities",
                     style: TextStyle(
                       fontSize: 15,
@@ -174,9 +163,11 @@ class _FooterState extends State<Footer> {
                   child: TextButton(
                     onPressed: () {
                       Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const ContactUsPage()));
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ContactUsPage(),
+                        ),
+                      );
                     },
                     child: const Text(
                       "Contact Us",
@@ -191,11 +182,17 @@ class _FooterState extends State<Footer> {
               SizedBox(
                 height: height / 4.5,
                 width: width / 6,
-                child: const Center(
-                  child: Text(
-                    "1800-GATOREST",
-                    style: TextStyle(
-                      fontSize: 15,
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {
+                      launch('tel:180042867378');
+                    },
+                    child: const Text(
+                      "1800-GATOREST",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),
@@ -203,11 +200,17 @@ class _FooterState extends State<Footer> {
               SizedBox(
                 height: height / 4.5,
                 width: width / 6,
-                child: const Center(
-                  child: Text(
-                    "info@gatorestinn.com",
-                    style: TextStyle(
-                      fontSize: 15,
+                child: Center(
+                  child: TextButton(
+                    onPressed: () {
+                      launch('mailto:info@gatorestinn.com');
+                    },
+                    child: const Text(
+                      "info@gatorestinn.com",
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
                     ),
                   ),
                 ),

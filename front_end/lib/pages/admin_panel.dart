@@ -96,27 +96,6 @@ class _AdminPageState extends State<AdminPage> {
                                 ),
                               ),
                             ),
-                            TextButton(
-                              onPressed: () {},
-                              child: Container(
-                                margin: const EdgeInsets.all(10),
-                                height: height / 4.5,
-                                width: width / 4.5,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(15),
-                                    color: const Color.fromARGB(
-                                        255, 239, 200, 84)),
-                                child: const Center(
-                                  child: Text(
-                                    "Manage Food Orders",
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                         Row(
