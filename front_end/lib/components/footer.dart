@@ -85,18 +85,6 @@ class _FooterState extends State<Footer> {
                   ),
                 ),
               ),
-              SizedBox(
-                height: height / 4.5,
-                width: width / 6,
-                child: const Center(
-                  child: Text(
-                    "Amenities",
-                    style: TextStyle(
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-              ),
             ],
           ),
           Column(

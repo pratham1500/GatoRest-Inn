@@ -61,20 +61,6 @@ class _NavBarState extends State<NavBar> {
             ),
           ),
           TextButton(
-            onPressed: () {},
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
-              child: Text(
-                "AMENITIES",
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 15,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          TextButton(
             onPressed: () {
               Navigator.pop(context);
               Navigator.push(

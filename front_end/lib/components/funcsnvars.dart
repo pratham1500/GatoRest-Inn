@@ -10,6 +10,11 @@ String? userEmail;
 String adminEmail = "";
 List<String> adminIds = [];
 
+List<String> sIds = [];
+List<String> sEmails = [];
+List<String> sTypes = [];
+List<String> sDescriptions = [];
+
 List<String> rIds = [];
 List<String> rEmails = [];
 List<Timestamp> rStart = [];

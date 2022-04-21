@@ -7,7 +7,7 @@ import '../components/footer.dart';
 import '../components/funcsnvars.dart';
 
 class UserAccount extends StatefulWidget {
-  const UserAccount({ Key? key }) : super(key: key);
+  const UserAccount({Key? key}) : super(key: key);
 
   @override
   State<UserAccount> createState() => _UserAccountState();
@@ -16,6 +16,8 @@ class UserAccount extends StatefulWidget {
 class _UserAccountState extends State<UserAccount> {
   @override
   Widget build(BuildContext context) {
+    var descController = TextEditingController();
+    var typeController = TextEditingController();
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -75,7 +77,8 @@ class _UserAccountState extends State<UserAccount> {
                                     .then(
                                   (snapshot) {
                                     for (var document in snapshot.docs) {
-                                      if (document["Email"] == auth.currentUser?.email) {
+                                      if (document["Email"] ==
+                                          auth.currentUser?.email) {
                                         rIds.add(document.id);
                                         rEmails.add(document['Email']);
                                         rStart.add(document['StartDate']);
@@ -91,7 +94,8 @@ class _UserAccountState extends State<UserAccount> {
                                     .then(
                                   (snapshot) {
                                     for (var document in snapshot.docs) {
-                                      if (document["Email"] == auth.currentUser?.email) {
+                                      if (document["Email"] ==
+                                          auth.currentUser?.email) {
                                         rIds.add(document.id);
                                         rEmails.add(document['Email']);
                                         rStart.add(document['StartDate']);
@@ -129,7 +133,124 @@ class _UserAccountState extends State<UserAccount> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      content: Container(
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(15),
+                                          color: Colors.white.withOpacity(.95),
+                                        ),
+                                        padding: const EdgeInsets.all(30),
+                                        height: height / 2,
+                                        width: width / 3,
+                                        child: Column(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            const Text(
+                                              "Add Service Request",
+                                              style: TextStyle(
+                                                color: Colors.amber,
+                                                fontSize: 25,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            TextField(
+                                              controller: typeController,
+                                              decoration: InputDecoration(
+                                                border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
+                                                ),
+                                                labelText: "Service Type (Electrical, Cleaning, etc.)",
+                                              ),
+                                            ),
+                                            TextField(
+                                              controller: descController,
+                                              maxLines:5,
+                                              decoration: InputDecoration(
+                                                border: OutlineInputBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(15),
+                                                ),
+                                                labelText: "Description",
+                                              ),
+                                            ),
+                                            const SizedBox(),
+                                            ElevatedButton(
+                                              onPressed: () async {
+                                                if (typeController
+                                                    .text.isNotEmpty) {
+                                                  if (descController
+                                                      .text.isNotEmpty) {
+                                                    FirebaseFirestore.instance
+                                                        .collection(
+                                                            "Service Requests")
+                                                        .add({
+                                                      "Description":
+                                                          descController.text,
+                                                      "Email": auth
+                                                          .currentUser?.email,
+                                                      "Service Type":
+                                                          typeController.text,
+                                                    });
+                                                    descController.clear();
+                                                    typeController.clear();
+                                                    Navigator.pop(context);
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return const AlertDialog(
+                                                          title: Text(
+                                                              "Service Request registered successfully!"),
+                                                        );
+                                                      },
+                                                    );
+                                                  } else {
+                                                    showDialog(
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return const AlertDialog(
+                                                          title: Text(
+                                                              "Description cannot be empty!"),
+                                                        );
+                                                      },
+                                                    );
+                                                  }
+                                                } else {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return const AlertDialog(
+                                                        title: Text(
+                                                            "Service Type cannot be empty!"),
+                                                      );
+                                                    },
+                                                  );
+                                                }
+                                              },
+                                              child: const Padding(
+                                                padding: EdgeInsets.all(8.0),
+                                                child: Text(
+                                                  "SUBMIT",
+                                                  style:
+                                                      TextStyle(fontSize: 20),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) {
+                                  setState(() {});
+                                });
+                              },
                               child: Container(
                                 margin: const EdgeInsets.all(10),
                                 height: height / 4.5,

@@ -1,17 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/components/funcsnvars.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 import '../components/footer.dart';
 
-class QueryView extends StatefulWidget {
-  const QueryView({Key? key}) : super(key: key);
+class ServiceRequest extends StatefulWidget {
+  const ServiceRequest({ Key? key }) : super(key: key);
 
   @override
-  State<QueryView> createState() => _QueryViewState();
+  State<ServiceRequest> createState() => _ServiceRequestState();
 }
 
-class _QueryViewState extends State<QueryView> {
+class _ServiceRequestState extends State<ServiceRequest> {
   @override
   Widget build(BuildContext context) {
     var height = MediaQuery.of(context).size.height;
@@ -43,7 +43,7 @@ class _QueryViewState extends State<QueryView> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         const Text(
-                          "Query Viewer",
+                          "Service Request Viewer",
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -52,35 +52,25 @@ class _QueryViewState extends State<QueryView> {
                         SizedBox(
                           height: height / 1.5,
                           width: width / 2,
-                          child: qids.isNotEmpty? ListView.builder(
+                          child: sEmails.isNotEmpty?ListView.builder(
                             padding: const EdgeInsets.all(8),
-                            itemCount: qids.length,
+                            itemCount: sEmails.length,
                             itemBuilder: (BuildContext context, int index) {
                               return ExpansionTile(
                                 title: Row(
                                   children: [
-                                    Text(qnames[index]),
+                                    Text(sEmails[index]),
                                     const Spacer(),
-                                    IconButton(
-                                      onPressed: () {
-                                        launch(
-                                            'mailto:${qemails[index]}?subject=Query Response');
-                                      },
-                                      icon: const Icon(
-                                        Icons.reply,
-                                        color: Colors.black,
-                                      ),
-                                    ),
                                     IconButton(
                                       onPressed: () async {
                                         await FirebaseFirestore.instance
-                                            .collection("Queries")
-                                            .doc(qids[index])
+                                            .collection("Service Requests")
+                                            .doc(sIds[index])
                                             .delete();
-                                        qids.removeAt(index);
-                                        qnames.removeAt(index);
-                                        qemails.removeAt(index);
-                                        queries.removeAt(index);
+                                        sIds.removeAt(index);
+                                        sEmails.removeAt(index);
+                                        sTypes.removeAt(index);
+                                        sDescriptions.removeAt(index);
                                         setState(() {});
                                       },
                                       icon: const Icon(
@@ -90,11 +80,11 @@ class _QueryViewState extends State<QueryView> {
                                     ),
                                   ],
                                 ),
-                                subtitle: Text(qemails[index]),
+                                subtitle: Text(sTypes[index]),
                                 children: [
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
-                                    child: Text(queries[index]),
+                                    child: Text(sDescriptions[index]),
                                   ),
                                 ],
                               );
@@ -102,7 +92,7 @@ class _QueryViewState extends State<QueryView> {
                           ):const Expanded(
                                   child: Center(
                                     child:
-                                        Text("No queries pending."),
+                                        Text("No pending service requests."),
                                   ),
                                 ),
                         ),

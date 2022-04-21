@@ -4,6 +4,7 @@ import 'package:front_end/components/funcsnvars.dart';
 import 'package:front_end/pages/admin_reservation_management.dart';
 import 'package:front_end/pages/manage_admin.dart';
 import 'package:front_end/pages/query_view.dart';
+import 'package:front_end/pages/service_requests.dart';
 
 import '../components/footer.dart';
 
@@ -130,7 +131,40 @@ class _AdminPageState extends State<AdminPage> {
                               ),
                             ),
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return const AlertDialog(
+                                      content: CircularProgressIndicator(),
+                                    );
+                                  },
+                                );
+                                sEmails = [];
+                                sTypes = [];
+                                sDescriptions = [];
+                                await FirebaseFirestore.instance
+                                    .collection("Service Requests")
+                                    .get()
+                                    .then(
+                                  (snapshot) {
+                                    for (var document in snapshot.docs) {
+                                      sIds.add(document.id);
+                                      sEmails.add(document['Email']);
+                                      sTypes.add(document['Service Type']);
+                                      sDescriptions
+                                          .add(document['Description']);
+                                    }
+                                  },
+                                );
+                                Navigator.pop(context);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const ServiceRequest(),
+                                  ),
+                                );
+                              },
                               child: Container(
                                 margin: const EdgeInsets.all(10),
                                 height: height / 4.5,
