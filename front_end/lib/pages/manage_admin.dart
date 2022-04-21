@@ -14,6 +14,8 @@ class ManageAdmin extends StatefulWidget {
 class _ManageAdminState extends State<ManageAdmin> {
   @override
   Widget build(BuildContext context) {
+    var emailController = TextEditingController();
+    var passController = TextEditingController();
     var height = MediaQuery.of(context).size.height;
     var width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -93,6 +95,115 @@ class _ManageAdminState extends State<ManageAdmin> {
                                   ),
                                 ),
                         ),
+                        ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    content: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(15),
+                                        color: Colors.white.withOpacity(.95),
+                                      ),
+                                      padding: const EdgeInsets.all(30),
+                                      height: height / 2,
+                                      width: width / 3,
+                                      child: Column(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          const Text(
+                                            "Add Admin",
+                                            style: TextStyle(
+                                              color: Colors.amber,
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          TextField(
+                                            controller: emailController,
+                                            decoration: InputDecoration(
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                              labelText: "Enter Email",
+                                            ),
+                                          ),
+                                          TextField(
+                                            controller: passController,
+                                            decoration: InputDecoration(
+                                              border: OutlineInputBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(15),
+                                              ),
+                                              labelText: "Enter Password",
+                                            ),
+                                            obscureText: true,
+                                          ),
+                                          const SizedBox(),
+                                          ElevatedButton(
+                                            onPressed: () async {
+                                              if (emailController
+                                                  .text.isNotEmpty) {
+                                                if (passController
+                                                    .text.isNotEmpty) {
+                                                  FirebaseFirestore.instance
+                                                      .collection("Admins")
+                                                      .doc(emailController.text)
+                                                      .set({
+                                                    "pass": passController.text,
+                                                  });
+                                                  adminIds.add(
+                                                      emailController.text);
+                                                  emailController.clear();
+                                                  passController.clear();
+                                                  Navigator.pop(context);
+                                                } else {
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return const AlertDialog(
+                                                        title: Text(
+                                                            "Password cannot be empty!"),
+                                                      );
+                                                    },
+                                                  );
+                                                }
+                                              } else {
+                                                showDialog(
+                                                  context: context,
+                                                  builder: (context) {
+                                                    return const AlertDialog(
+                                                      title: Text(
+                                                          "Email cannot be empty!"),
+                                                    );
+                                                  },
+                                                );
+                                              }
+                                            },
+                                            child: const Padding(
+                                              padding: EdgeInsets.all(8.0),
+                                              child: Text(
+                                                "SAVE",
+                                                style: TextStyle(fontSize: 20),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ).then((value) {
+                                setState(() {});
+                              });
+                            },
+                            child: Text(
+                              "Add Admin",
+                              style: TextStyle(fontSize: 20),
+                            ))
                       ],
                     ),
                   ),

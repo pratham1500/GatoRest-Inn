@@ -5,6 +5,7 @@ import 'package:front_end/pages/contact_us.dart';
 import 'package:front_end/pages/home_page.dart';
 import 'package:front_end/pages/locations.dart';
 import 'package:front_end/pages/signup_page.dart';
+import 'package:front_end/pages/user_panel.dart';
 import '../pages/login_page.dart';
 
 class NavBar extends StatefulWidget {
@@ -139,7 +140,14 @@ class _NavBarState extends State<NavBar> {
                   ),
                 )
               : TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const UserAccount(),
+                      ),
+                    );
+                  },
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Text(

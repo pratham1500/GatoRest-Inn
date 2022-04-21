@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:front_end/components/funcsnvars.dart';
+import 'package:front_end/pages/admin_reservation_management.dart';
 import 'package:front_end/pages/manage_admin.dart';
 import 'package:front_end/pages/query_view.dart';
 
@@ -55,7 +56,60 @@ class _AdminPageState extends State<AdminPage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             TextButton(
-                              onPressed: () {},
+                              onPressed: () async {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return const AlertDialog(
+                                      content: CircularProgressIndicator(),
+                                    );
+                                  },
+                                );
+                                rIds = [];
+                                rEmails = [];
+                                rStart = [];
+                                rEnd = [];
+                                rActive = [];
+                                await FirebaseFirestore.instance
+                                    .collection("Standard Rooms")
+                                    .get()
+                                    .then(
+                                  (snapshot) {
+                                    for (var document in snapshot.docs) {
+                                      if (document["Email"] != "") {
+                                        rIds.add(document.id);
+                                        rEmails.add(document['Email']);
+                                        rStart.add(document['StartDate']);
+                                        rEnd.add(document['EndDate']);
+                                        rActive.add(document['Active']);
+                                      }
+                                    }
+                                  },
+                                );
+                                await FirebaseFirestore.instance
+                                    .collection("Executive Suites")
+                                    .get()
+                                    .then(
+                                  (snapshot) {
+                                    for (var document in snapshot.docs) {
+                                      if (document["Email"] != "") {
+                                        rIds.add(document.id);
+                                        rEmails.add(document['Email']);
+                                        rStart.add(document['StartDate']);
+                                        rEnd.add(document['EndDate']);
+                                        rActive.add(document['Active']);
+                                      }
+                                    }
+                                  },
+                                );
+                                Navigator.pop(context);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const ReservAdmin(),
+                                  ),
+                                );
+                              },
                               child: Container(
                                 margin: const EdgeInsets.all(10),
                                 height: height / 4.5,

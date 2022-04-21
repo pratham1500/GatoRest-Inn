@@ -265,7 +265,7 @@ class _AvailabilityPageState extends State<AvailabilityPage> {
                                       (snapshot) {
                                         for (var document in snapshot.docs) {
                                           if (endDate.isBefore(
-                                              document["StartDate"].toDate())) {
+                                              document["StartDate"].toDate())&&document['RoomUser']=="") {
                                             FirebaseFirestore.instance
                                                 .collection(standard
                                                     ? "Standard Rooms"
@@ -281,7 +281,7 @@ class _AvailabilityPageState extends State<AvailabilityPage> {
                                             break;
                                           }
                                           if (startDate.isAfter(
-                                              document["EndDate"].toDate())) {
+                                              document["EndDate"].toDate())&&document['RoomUser']=="") {
                                             FirebaseFirestore.instance
                                                 .collection(standard
                                                     ? "Standard Rooms"
@@ -292,7 +292,9 @@ class _AvailabilityPageState extends State<AvailabilityPage> {
                                                   Timestamp.fromDate(startDate),
                                               "StartDate":
                                                   Timestamp.fromDate(endDate),
-                                              "SuiteUser": uid,
+                                              "RoomUser": uid,
+                                              "Email":auth.currentUser?.email,
+                                              "Active":false
                                             });
                                             break;
                                           }

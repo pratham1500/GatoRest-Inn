@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 bool isSignedIn = false;
@@ -8,6 +9,12 @@ String? userEmail;
 
 String adminEmail = "";
 List<String> adminIds = [];
+
+List<String> rIds = [];
+List<String> rEmails = [];
+List<Timestamp> rStart = [];
+List<Timestamp> rEnd = [];
+List<bool> rActive = [];
 
 List<String> qids = [];
 List<String> qnames = [];
